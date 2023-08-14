@@ -30,33 +30,7 @@ h2 {
   margin-top: 20px;
 }
 
-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-top: 20px;
-  background-color: #fff;
-  border-radius: 8px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
 
-table th,
-table td {
-  padding: 10px;
-  text-align: left;
-}
-
-table th {
-  background-color: #f4f4f4;
-  border-bottom: 2px solid #ddd;
-}
-
-table tbody tr:nth-child(even) {
-  background-color: #f4f4f4;
-}
-
-table tbody tr:hover {
-  background-color: #ddd;
-}
 
 /* Nuevos estilos para la sección Última Medición */
 .last-measurement {
@@ -95,4 +69,35 @@ table tbody tr:hover {
 .pagination button:disabled {
   background-color: #ccc;
   cursor: not-allowed;
+}
+
+table th {
+  background-color: #f4f4f4;
+  border-bottom: 2px solid #ddd;
+}
+
+table tbody tr:nth-child(even) {
+  background-color: #f4f4f4;
+}
+
+table tbody tr:hover {
+  background-color: #ddd;
+}
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  overflow-x: auto;
+}
+
+table th,
+table td {
+  padding: 8px;
+  text-align: left;
+  font-size: 14px; /* Ajusta el tamaño de fuente */
 }
