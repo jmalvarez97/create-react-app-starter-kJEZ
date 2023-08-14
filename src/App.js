@@ -37,12 +37,12 @@ function App() {
            {currentMeasurements.length > 0 && (
              <div className="measurement-row">
                <div className="measurement-column">
-                 <p>s1 Humedad: {currentMeasurements[0].s1h}</p>
-                 <p>s1 Temperatura: {currentMeasurements[0].s1t}</p>
+                 <p>Secadero 1 Humedad: {currentMeasurements[0].s1h}</p>
+                 <p>Secadero 1 Temperatura: {currentMeasurements[0].s1t}</p>
                </div>
                <div className="measurement-column">
-                 <p>s2 Humedad: {currentMeasurements[0].s2h}</p>
-                 <p>s2 Temperatura: {currentMeasurements[0].s2t}</p>
+                 <p>Secadero 2 Humedad: {currentMeasurements[0].s2h}</p>
+                 <p>Secadero 2 Temperatura: {currentMeasurements[0].s2t}</p>
                </div>
              </div>
            )}
