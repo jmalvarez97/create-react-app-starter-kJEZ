@@ -19,7 +19,7 @@ function App() {
       .then(response => response.json())
       .then(data => setLastMeasurement(data));
 
-    fetch(url + "/api/measurement")
+    fetch(url + "/api/last96Measurements")
       .then(response => response.json())
       .then(data => setMeasurements(data.reverse()));
   }, []);
