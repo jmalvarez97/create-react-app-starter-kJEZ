@@ -21,10 +21,10 @@ function App() {
 
     fetch(url + "/api/last96Measurements")
       .then(response => response.json())
-      .then(data => setMeasurements(data.reverse()));
+      .then(data => setMeasurements(data));
   }, []);
 
-  const last30Measurements = measurements.slice(0, 30).reverse()
+  const last30Measurements = measurements.slice(0, 30)
 
   return (
     <div className="App">
