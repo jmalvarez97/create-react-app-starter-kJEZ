@@ -24,12 +24,12 @@ function App() {
       .then(data => setMeasurements(data));
   }, []);
 
-  const last30Measurements = measurements.slice(0, 30)
+  const last30Measurements = measurements.slice(0, 30).reverse()
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>WebApp de Temperatura y Humedad</h1>
+        <h1>Monitor de Temperatura y Humedad</h1>
         {lastMeasurement && (
           <div className="last-measurement">
             <h2>Última Medición</h2>
