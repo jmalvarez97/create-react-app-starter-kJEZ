@@ -1,0 +1,36 @@
+/* Estilos para el componente LineChartExample */
+.line-chart {
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    padding: 20px;
+    overflow-x: auto;
+  }
+  
+  .chart-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Centra los gráficos horizontalmente */
+    align-items: center; /* Centra los gráficos verticalmente */
+    overflow-x: auto;
+  }
+  
+  .recharts-wrapper {
+    width: calc(50% - 20px);
+    max-width: 400px;
+    height: 300px;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  /* Ajusta los estilos para dispositivos móviles */
+  @media (max-width: 768px) {
+    .recharts-wrapper,
+    table {
+      width: 100%;
+    }
+  }
+  
