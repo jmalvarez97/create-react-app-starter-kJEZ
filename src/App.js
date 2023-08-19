@@ -33,7 +33,7 @@ function App() {
         <h1>Monitor de Temperatura y Humedad</h1>
    
         <div className="switch-container">
-          <span className="sala-label">Sala 1</span>
+          <span className="sala-label">Placa 1</span>
           <label className="switch">
             <input
               type="checkbox"
@@ -42,7 +42,7 @@ function App() {
             />
             <span className="slider"></span>
           </label>
-          <span className="sala-label">Sala 2</span>
+          <span className="sala-label">Placa 2</span>
         </div>
 
 
