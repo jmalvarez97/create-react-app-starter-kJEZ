@@ -8,6 +8,7 @@ function App() {
   const [measurementsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [measurements, setMeasurements] = useState([]);
+  const [currentSala, setCurrentSala] = useState(1);
   const secadorCount = 2;
 
   const lastIndex = currentPage * measurementsPerPage;
@@ -15,14 +16,14 @@ function App() {
   const currentMeasurements = measurements.slice(firstIndex, lastIndex);
 
   useEffect(() => {
-    fetch(url + "/api/lastMeasurement")
+    fetch(`${url}/api/lastMeasurement/${currentSala}`)
       .then(response => response.json())
       .then(data => setLastMeasurement(data));
 
-    fetch(url + "/api/last96Measurements")
+      fetch(`${url}/api/last96Measurements/${currentSala}`)
       .then(response => response.json())
       .then(data => setMeasurements(data));
-  }, []);
+  }, [currentSala]);
 
   const last30Measurements = measurements.slice(0, 48).reverse()
 
@@ -30,6 +31,21 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Monitor de Temperatura y Humedad</h1>
+   
+        <div className="switch-container">
+          <span className="sala-label">Sala 1</span>
+          <label className="switch">
+            <input
+              type="checkbox"
+              onChange={() => setCurrentSala(currentSala === 1 ? 3 : 1)}
+              checked={currentSala === 3}
+            />
+            <span className="slider"></span>
+          </label>
+          <span className="sala-label">Sala 2</span>
+        </div>
+
+
         {lastMeasurement && (
           <div className="last-measurement">
             <h2>Última Medición</h2>
@@ -38,9 +54,9 @@ function App() {
               <div className="measurement-row">
                 {Array.from({ length: secadorCount }).map((_, index) => (
                   <div className="measurement-column" key={index}>
-                    <h3>Secadero {index + 1}</h3>
-                    <p>  H%: {lastMeasurement[`s${index + 1}h`]}</p>
-                    <p>  C°: {lastMeasurement[`s${index + 1}t`]}</p>
+                    <h3>Secadero {index + currentSala}</h3>
+                    <p>  H%: {lastMeasurement[`s${index + currentSala}h`]}</p>
+                    <p>  C°: {lastMeasurement[`s${index + currentSala}t`]}</p>
                   </div>
                 ))}      
               </div>
@@ -54,8 +70,8 @@ function App() {
               <th>Fecha</th>
               {Array.from({ length: secadorCount }).map((_, index) => (
                 <React.Fragment key={index}>
-                  <th>Sala {index + 1} H%</th>
-                  <th>Sala {index + 1} C°</th>
+                  <th>Sec. {index + currentSala} H%</th>
+                  <th>Sec. {index + currentSala} C°</th>
                 </React.Fragment>
               ))}
             </tr>
@@ -66,8 +82,8 @@ function App() {
                 <td>{measurement.date}</td>
                 {Array.from({ length: secadorCount }).map((_, index) => (
                   <React.Fragment key={index}>
-                    <td>{measurement[`s${index + 1}h`]}</td>
-                    <td>{measurement[`s${index + 1}t`]}</td>
+                    <td>{measurement[`s${index + currentSala}h`]}</td>
+                    <td>{measurement[`s${index + currentSala}t`]}</td>
                   </React.Fragment>
                 ))}
               </tr>
@@ -93,8 +109,8 @@ function App() {
         {measurements.length > 0 && (
           <div className="chart-container">
             <div className="chart">
-            <Chart data={last30Measurements} secadorIndex={0} />
-            <Chart data={last30Measurements} secadorIndex={1} />
+            <Chart data={last30Measurements} secadorIndex={currentSala - 1} />
+            <Chart data={last30Measurements} secadorIndex={currentSala} />
             </div>
           </div>
         )}
