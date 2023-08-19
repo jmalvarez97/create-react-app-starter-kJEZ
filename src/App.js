@@ -8,7 +8,7 @@ function App() {
   const [measurementsPerPage] = useState(10);
   const [currentPage, setCurrentPage] = useState(1);
   const [measurements, setMeasurements] = useState([]);
-  const secadorCount = 4;
+  const secadorCount = 2;
 
   const lastIndex = currentPage * measurementsPerPage;
   const firstIndex = lastIndex - measurementsPerPage;
@@ -24,7 +24,7 @@ function App() {
       .then(data => setMeasurements(data));
   }, []);
 
-  const last30Measurements = measurements.slice(0, 30).reverse()
+  const last30Measurements = measurements.slice(0, 48).reverse()
 
   return (
     <div className="App">
@@ -38,11 +38,11 @@ function App() {
               <div className="measurement-row">
                 {Array.from({ length: secadorCount }).map((_, index) => (
                   <div className="measurement-column" key={index}>
-                    <p>Secadero {index + 1} H%: {currentMeasurements[0][`s${index + 1}h`]}</p>
-                    <p>Secadero {index + 1} C°: {currentMeasurements[0][`s${index + 1}t`]}</p>
+                    <h3>Secadero {index + 1}</h3>
+                    <p>  H%: {lastMeasurement[`s${index + 1}h`]}</p>
+                    <p>  C°: {lastMeasurement[`s${index + 1}t`]}</p>
                   </div>
-                ))}
-                
+                ))}      
               </div>
             )}
           </div>
@@ -95,8 +95,6 @@ function App() {
             <div className="chart">
             <Chart data={last30Measurements} secadorIndex={0} />
             <Chart data={last30Measurements} secadorIndex={1} />
-            <Chart data={last30Measurements} secadorIndex={2} />
-            <Chart data={last30Measurements} secadorIndex={3} />
             </div>
           </div>
         )}

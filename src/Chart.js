@@ -15,7 +15,7 @@ export function Chart({ data, secadorIndex }) {
         <LineChart width={330} height={250} data={data}>
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" tickFormatter={formatXAxis} />
-          <YAxis domain={[40, "dataMax + 10"]} /> 
+          <YAxis domain={["dataMin - 10", "dataMax + 10"]} /> 
           <Tooltip />
           <Legend />
           <Line type="monotone" dataKey={`s${secadorIndex + 1}h`} stroke="#8884d8" activeDot={false} />
