@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from "react";
-import {Chart} from "./Chart";
+import {Chart} from "./Components/Chart";
+import { Toggle } from "./Components/Toggle";
 import "./App.css";
 
 function App() {
   const url = "https://expressjs-postgres-production-2fee.up.railway.app";
+  // DATA
   const [lastMeasurement, setLastMeasurement] = useState(null);
-  const [measurementsPerPage] = useState(10);
-  const [currentPage, setCurrentPage] = useState(1);
   const [measurements, setMeasurements] = useState([]);
+  // PAGINADORES
+  const [currentPage, setCurrentPage] = useState(1);
   const [currentSala, setCurrentSala] = useState(1);
+  const [measurementsPerPage] = useState(10);
+  // # DE SECADORES POR PLACA
   const secadorCount = 2;
 
   const lastIndex = currentPage * measurementsPerPage;
@@ -31,20 +35,11 @@ function App() {
     <div className="App">
       <header className="App-header">
         <h1>Monitor de Temperatura y Humedad</h1>
-   
-        <div className="switch-container">
-          <span className="sala-label">Placa 1</span>
-          <label className="switch">
-            <input
-              type="checkbox"
-              onChange={() => setCurrentSala(currentSala === 1 ? 3 : 1)}
-              checked={currentSala === 3}
-            />
-            <span className="slider"></span>
-          </label>
-          <span className="sala-label">Placa 2</span>
-        </div>
-
+        
+        <Toggle
+          setCurrentSala={setCurrentSala}
+          currentSala={currentSala}
+        />
 
         {lastMeasurement && (
           <div className="last-measurement">
@@ -63,6 +58,8 @@ function App() {
             )}
           </div>
         )}
+
+        
         <h2>Tabla de Mediciones</h2>
         <table>
           <thead>
