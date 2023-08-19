@@ -29,7 +29,7 @@ function App() {
       .then(data => setMeasurements(data));
   }, [currentSala]);
 
-  const last30Measurements = measurements.slice(0, 48).reverse()
+  const m = measurements.slice(0, 96).reverse()
 
   return (
     <div className="App">
@@ -104,12 +104,12 @@ function App() {
       </header>
         
         {measurements.length > 0 && (
-          <div className="chart-container">
+          
             <div className="chart">
-            <Chart data={last30Measurements} secadorIndex={currentSala - 1} />
-            <Chart data={last30Measurements} secadorIndex={currentSala} />
+            <Chart data={m} secadorIndex={currentSala - 1} />
+            <Chart data={m} secadorIndex={currentSala} />
             </div>
-          </div>
+         
         )}
     </div>
   );

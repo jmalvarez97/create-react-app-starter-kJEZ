@@ -20,10 +20,10 @@ export function Chart({ data, secadorIndex }) {
     <div className="line-chart">
       <h3> R% y Temperatura - Secadero {secadorIndex + 1}</h3>
       <div className="chart-container">
-        <LineChart width={340} height={250} data={data}   padding={{ top: 20, right: 30, left: 30, bottom: 20 }}>
+        <LineChart width={400} height={250} data={data} dot={false}  >
           <CartesianGrid strokeDasharray="3 3" />
           <XAxis dataKey="date" tickFormatter={formatXAxis} />
-          <YAxis yAxisId="humidity" domain={[minHumidity - 3, maxHumidity + 3]} label={{ value: "Humedad (%)", angle: -90, tick:false }} />
+          <YAxis yAxisId="humidity" domain={[minHumidity - 1, maxHumidity + 1]} label={{ value: "Humedad (%)", angle: -90, tick:false }} />
           <YAxis yAxisId="temperature" orientation="right" domain={[minTemperature - 2, maxTemperature + 2]} label={{ value: "Temperatura (°C)", angle: 90, position: 'insideBottomRight' }} />
           <Tooltip itemStyle={{background: "#666"}} labelStyle={{background: "#666"}}  />
           <Legend />
