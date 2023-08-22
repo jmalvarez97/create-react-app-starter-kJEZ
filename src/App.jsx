@@ -29,7 +29,8 @@ function App() {
       .then(data => setMeasurements(data));
   }, [currentSala]);
 
-  const m = measurements.slice(0, 96).reverse()
+  
+  const m = measurements.slice(0, 24).reverse()
 
   return (
     <div className="App">
